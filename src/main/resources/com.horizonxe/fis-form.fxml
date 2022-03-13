@@ -50,8 +50,8 @@
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Button>
-            <Button layoutX="421.0" layoutY="132.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="14.0" style="-fx-background-color: #4bcd3e;" stylesheets="@styles.css" text="+" />
-            <Button layoutX="421.0" layoutY="192.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="14.0" style="-fx-background-color: #4bcd3e;" stylesheets="@styles.css" text="+" />
+            <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#addData" prefHeight="24.0" prefWidth="84.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;" stylesheets="@styles.css" text="Add Data" />
+            <Button layoutX="120.0" layoutY="14.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="65.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;" stylesheets="@styles.css" text="Help" />
             </Pane>
         </center>
     </BorderPane>
