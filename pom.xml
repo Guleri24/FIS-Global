@@ -4,31 +4,30 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.changenode</groupId>
-    <artifactId>maven-jpackage-template</artifactId>
+    <groupId>com.horizonxe</groupId>
+    <artifactId>fis-global</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!-- This description text is included in the Windows installer by default, see windows-jpackage.txt -->
-    <description>Sample JavaFX Application</description>
+    <description>Maven project setup interface from the chosen project and module.</description>
 
     <properties>
         <!-- Set this to the class with the main method for your application -->
-        <main-class>com.changenode.BaseApplication</main-class>
+        <main-class>com.horizonxe.FisGlobal</main-class>
         <!-- Change your app's name to something interesting... but you might want to avoid spaces
         just to safe for compatibility across operating systems. -->
-        <app.name>TestApp</app.name>
+        <app.name>FIS-Global</app.name>
         <!-- This converts the build timestamp to a Windows-installer friendly version number (minute level resolution).
         Note that Maven generated timestamp is in UTC, not local time. For more information see:
          https://docs.microsoft.com/en-us/windows/win32/msi/productversion
          https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/text/SimpleDateFormat.html
          -->
-        <maven.build.timestamp.format>yy.ww.WWkkmm</maven.build.timestamp.format>
-        <app.version>${maven.build.timestamp}</app.version>
+        <app.version>1.0</app.version>
 
         <!-- This property is used to specify the modules included in the (custom) JVM image. -->
         <!-- Reminder: javafx.web (the embedded browser component) is not included in this project by default due
         to GitHub template size restrictions. You can download the full SDK from https://openjfx.io -->
-        <jvm.modules>javafx.media,javafx.controls,javafx.fxml,java.logging</jvm.modules>
+        <jvm.modules>javafx.controls,javafx.fxml</jvm.modules>
 
         <!-- Set the project to UTF-8, avoiding warnings in the build logs -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,7 +43,7 @@
         grab a unique UUID via https://www.uuidgenerator.net -->
         <windows.upgrade.uuid>aaaaaaaa-0000-aaaa-aaaa-aaaaaaaaaaaa</windows.upgrade.uuid>
         <!-- This is used to set many user-visible fields in the Windows Installer. See windows-jpackage.txt -->
-        <windows.vendor>Sample</windows.vendor>
+        <windows.vendor>HorizonXE</windows.vendor>
 
         <!-- Empty properties to skip signing by default. Set with the macos-sign Maven profile -->
         <macos.sign></macos.sign>
@@ -306,7 +305,7 @@
             <properties>
                 <macos.sign>--mac-sign</macos.sign>
                 <!-- You will have to replace this with your own dev information from your Apple identity -->
-                <macos.sign.identity>--mac-signing-key-user-name "Company Name, Inc. (BXPXTXC35S)"</macos.sign.identity>
+                <macos.sign.identity>--mac-signing-key-user-name "HorizonXE"</macos.sign.identity>
             </properties>
         </profile>
 
