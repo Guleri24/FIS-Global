@@ -1,0 +1,28 @@
+.root {
+    -fx-dark-text-color: black;
+    -fx-light-text-color: #9aa3af;
+}
+.combo-box,
+.choice-box {
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #4bcd3e;
+    -fx-text-fill: black;
+    -fx-background-color: none;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #4bcd3e;
+    -fx-padding: 0 0 3 -8;
+}
+
+.combo-box .list-cell:filled:selected .text,
+.choice-box .list-cell:filled:selected .text {
+    -fx-fill: white;
+    -fx-font-size: 14px;
+}
+
+.combo-box .arrow,
+.choice-box .arrow {
+    -fx-background-color: #4bcd3e;
+}
+
+
+
