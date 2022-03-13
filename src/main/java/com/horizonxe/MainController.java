@@ -107,7 +107,7 @@ public class MainController {
         writer.close();
 
         if (isWindows) {
-            Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"" + executableFile.getAbsolutePath() + "\"");
+            Runtime.getRuntime().exec("cmd /c start excel /K \"" + executableFile.getAbsolutePath() + "\"");
             stage.close();
         } else {
             stage.close();
