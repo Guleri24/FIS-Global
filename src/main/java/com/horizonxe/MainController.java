@@ -15,6 +15,8 @@ import java.util.List;
 
 public class MainController {
     private static BufferedWriter writer;
+    private final List<String> projects = new ArrayList<>();
+    private final List<String> modules = new ArrayList<>();
     @FXML
     public Button triggerCmd;
     @FXML
@@ -22,8 +24,6 @@ public class MainController {
     @FXML
     public ComboBox<String> moduleMenu;
     public AnchorPane mainView;
-    private final List<String> projects = new ArrayList<>();
-    private final List<String> modules = new ArrayList<>();
     private File executableFile;
     private File dataFile;
     private boolean isWindows;
