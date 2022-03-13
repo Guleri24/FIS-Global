@@ -6,7 +6,7 @@
 
     <groupId>com.horizonxe</groupId>
     <artifactId>fis-global</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <!-- This description text is included in the Windows installer by default, see windows-jpackage.txt -->
     <description>Maven project setup interface from the chosen project and module.</description>

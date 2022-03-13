@@ -2,7 +2,6 @@ package com.horizonxe;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -12,13 +11,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MainController {
     private static BufferedWriter writer;
     private final List<String> projects = new ArrayList<>();
     private final List<String> modules = new ArrayList<>();
-    @FXML
-    public Button triggerCmd;
     @FXML
     public ComboBox<String> projectMenu;
     @FXML
@@ -83,18 +81,24 @@ public class MainController {
         writer.append("mvn -DProj ").append(project).append(" -DMod ").append(module);
     }
 
-    // Enter the projects and modules here
     private void initData() throws IOException {
         newFile("data");
         String row;
+
         BufferedReader csvReader = new BufferedReader(new FileReader(dataFile));
         while ((row = csvReader.readLine()) != null) {
-
             String[] data = row.split(",");
-            projects.add(data[0]);
-            modules.add(data[1]);
+            if (!Objects.equals(data[0], ""))
+                projects.add(data[0]);
+            if (!Objects.equals(data[1], ""))
+                modules.add(data[1]);
         }
         csvReader.close();
+
+        if (projects.isEmpty())
+            projects.add("Empty");
+        if (modules.isEmpty())
+            modules.add("Empty");
 
         projectMenu.setItems(FXCollections.observableArrayList(projects));
         moduleMenu.setItems(FXCollections.observableArrayList(modules));
@@ -107,7 +111,7 @@ public class MainController {
         writer.close();
 
         if (isWindows) {
-            Runtime.getRuntime().exec("cmd /c start excel /K \"" + executableFile.getAbsolutePath() + "\"");
+            Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"" + executableFile.getAbsolutePath() + "\"");
             stage.close();
         } else {
             stage.close();

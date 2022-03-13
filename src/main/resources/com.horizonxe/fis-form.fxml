@@ -53,17 +53,26 @@
                 </Label>
                 <ComboBox fx:id="moduleMenu" layoutX="204.0" layoutY="186.0" prefHeight="35.0" prefWidth="211.0"
                           stylesheets="@styles.css"/>
-                <Button fx:id="triggerCmd" layoutX="310.0" layoutY="266.0" mnemonicParsing="false"
-                        onAction="#triggerCmd" prefHeight="30.0" prefWidth="105.0"
-                        style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;" stylesheets="@styles.css"
-                        text="Trigger">
+                <Button layoutX="310.0" layoutY="266.0" mnemonicParsing="false" onAction="#triggerCmd" prefHeight="30.0"
+                        prefWidth="105.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;"
+                        stylesheets="@styles.css" text="Trigger &gt;">
                     <font>
                         <Font name="System Bold" size="13.0"/>
                     </font>
+                    <tooltip>
+                        <Tooltip text="Executes the executable file"/>
+                    </tooltip>
                 </Button>
                 <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#addData" prefHeight="24.0"
-                        prefWidth="84.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;"
-                        stylesheets="@styles.css" text="Add Data"/>
+                        prefWidth="265.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;"
+                        stylesheets="@styles.css" text="Add new projects or modules &gt;">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                    <tooltip>
+                        <Tooltip text="eg. project,module or ,module or project,"/>
+                    </tooltip>
+                </Button>
             </Pane>
         </center>
     </BorderPane>
