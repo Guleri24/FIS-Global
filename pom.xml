@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -118,7 +118,7 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <!-- This copies all of the jar files declared by the Maven build into a single directory.
+                        <!-- This copies all the jar files declared by the Maven build into a single directory.
                         This makes it easy to assemble the final installer package -->
                         <id>copy-dependencies</id>
                         <phase>package</phase>
@@ -127,7 +127,7 @@
                         </goals>
                         <configuration>
                             <!-- The JavaFX libraries are bundled into the custom JVM, so we don't want to duplicate
-                            them in the bundled app and installer. This command skips all of the JavaFX by groupId. -->
+                            them in the bundled app and installer. This command skips all the JavaFX by groupId. -->
                             <excludeGroupIds>org.openjfx</excludeGroupIds>
                         </configuration>
                     </execution>

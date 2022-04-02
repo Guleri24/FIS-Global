@@ -88,10 +88,15 @@ public class MainController {
         BufferedReader csvReader = new BufferedReader(new FileReader(dataFile));
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split(",");
-            if (!Objects.equals(data[0], ""))
+            if (data.length > 1) {
+                if (!data[0].isBlank())
+                    projects.add(data[0]);
+                if (!data[1].isBlank())
+                    modules.add(data[1]);
+            }
+            else {
                 projects.add(data[0]);
-            if (!Objects.equals(data[1], ""))
-                modules.add(data[1]);
+            }
         }
         csvReader.close();
 
