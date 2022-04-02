@@ -3,6 +3,8 @@ package com.horizonxe;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -22,11 +24,13 @@ public class MainController {
     @FXML
     public ComboBox<String> moduleMenu;
     public AnchorPane mainView;
+    @FXML
+    public TextArea executeBeforeCmds;
     private File executableFile;
     private File dataFile;
     private boolean isWindows;
 
-    public void initialize() throws IOException, InterruptedException {
+    public void initialize() throws IOException {
         newFile("exec");
         writer = Files.newBufferedWriter(Paths.get(String.valueOf(executableFile)));
         writer.write("");
@@ -78,7 +82,7 @@ public class MainController {
     }
 
     private void writeData(BufferedWriter writer, String project, String module) throws IOException {
-        writer.append("mvn -DProj ").append(project).append(" -DMod ").append(module);
+        writer.append(executeBeforeCmds.getText()).append(" && mvn -DProj ").append(project).append(" -DMod ").append(module);
     }
 
     private void initData() throws IOException {
@@ -93,8 +97,7 @@ public class MainController {
                     projects.add(data[0]);
                 if (!data[1].isBlank())
                     modules.add(data[1]);
-            }
-            else {
+            } else {
                 projects.add(data[0]);
             }
         }
@@ -114,7 +117,6 @@ public class MainController {
         writeData();
         Stage stage = (Stage) mainView.getScene().getWindow();
         writer.close();
-
         if (isWindows) {
             Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"" + executableFile.getAbsolutePath() + "\"");
             stage.close();
@@ -122,8 +124,9 @@ public class MainController {
             stage.close();
         /*
 		    Runtime.getRuntime().exec(System.getenv("TERM") + " -e bash -c " + file.getAbsolutePath() + ";read");
-        */
+		*/
             Runtime.getRuntime().exec("alacritty" + " -e bash -c " + executableFile.getAbsolutePath() + ";read");
+
         }
     }
 

@@ -2,8 +2,10 @@
     -fx-dark-text-color: black;
     -fx-light-text-color: #9aa3af;
 }
+
 .combo-box,
 .choice-box {
+    -fx-control-inner-background: #000000;
     -fx-font-size: 14px;
     -fx-prompt-text-fill: #4bcd3e;
     -fx-text-fill: black;
@@ -24,5 +26,11 @@
     -fx-background-color: #4bcd3e;
 }
 
-
-
+.text-area {
+    -fx-control-inner-background: #000000;
+    -fx-font-family: Consolas;
+    -fx-highlight-fill: #00ff00;
+    -fx-highlight-text-fill: #000000;
+    -fx-text-fill: #00ff00;
+    -fx-prompt-text-fill: #4bcd3e;
+}

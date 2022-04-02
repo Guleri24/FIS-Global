@@ -1,78 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="440.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17"
-            fx:controller="com.horizonxe.MainController">
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.horizonxe.MainController">
     <BorderPane prefHeight="440.0" prefWidth="780.0">
         <left>
-            <Pane prefHeight="440.0" prefWidth="322.0" style="-fx-background-color: #012834;" stylesheets="@styles.css"
-                  BorderPane.alignment="CENTER">
-                <ImageView fitHeight="53.0" fitWidth="136.0" layoutX="33.0" layoutY="34.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <Image url="@logo.png"/>
+            <Pane prefHeight="440.0" prefWidth="322.0" style="-fx-background-color: #012834;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+                <ImageView fitHeight="53.0" fitWidth="136.0" layoutX="33.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@logo.png" />
                 </ImageView>
-                <Label layoutX="25.0" layoutY="204.0" prefHeight="61.0" prefWidth="269.0"
-                       text="ADVANCING THE WAY THE WORLD" textFill="#fcf7f7" wrapText="true">
+                <Label layoutX="25.0" layoutY="204.0" prefHeight="61.0" prefWidth="269.0" text="ADVANCING THE WAY THE WORLD" textFill="#fcf7f7" wrapText="true">
                     <font>
-                        <Font name="System Bold" size="25.0"/>
+                        <Font name="System Bold" size="25.0" />
                     </font>
                 </Label>
-                <Label layoutX="25.0" layoutY="265.0" prefHeight="61.0" prefWidth="269.0"
-                       style="-fx-text-fill: #009775;" stylesheets="@styles.css" text="PAYS, BANKS AND INVESTS"
-                       textFill="#777c7b" wrapText="true">
+                <Label layoutX="25.0" layoutY="265.0" prefHeight="61.0" prefWidth="269.0" style="-fx-text-fill: #009775;" stylesheets="@styles.css" text="PAYS, BANKS AND INVESTS" textFill="#777c7b" wrapText="true">
                     <font>
-                        <Font name="System Bold" size="25.0"/>
+                        <Font name="System Bold" size="25.0" />
                     </font>
                 </Label>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#70cea6" height="4.0" layoutX="25.0" layoutY="337.0"
-                           stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-fill: #4bcd3e;" width="41.0"/>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#70cea6" height="4.0" layoutX="25.0" layoutY="337.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-fill: #4bcd3e;" width="41.0" />
             </Pane>
         </left>
         <center>
-            <Pane prefHeight="440.0" prefWidth="455.0" style="-fx-background-color: #003b4d;" stylesheets="@styles.css"
-                  BorderPane.alignment="CENTER">
-                <ComboBox fx:id="projectMenu" layoutX="204.0" layoutY="126.0" prefHeight="35.0" prefWidth="211.0"
-                          stylesheets="@styles.css"/>
-                <Label layoutX="40.0" layoutY="127.0" prefHeight="33.0" prefWidth="137.0" text="Project Name"
-                       textFill="WHITE">
+            <Pane prefHeight="440.0" prefWidth="455.0" style="-fx-background-color: #003b4d;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+                <ComboBox fx:id="projectMenu" layoutX="205.0" layoutY="109.0" prefHeight="35.0" prefWidth="211.0" stylesheets="@styles.css" />
+                <Label layoutX="40.0" layoutY="110.0" prefHeight="33.0" prefWidth="137.0" text="Project Name" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="16.0"/>
+                        <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="41.0" layoutY="189.0" prefHeight="28.0" prefWidth="135.0" text="Module Name"
-                       textFill="WHITE">
+                <Label layoutX="41.0" layoutY="177.0" prefHeight="28.0" prefWidth="135.0" text="Module Name" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="16.0"/>
+                        <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="moduleMenu" layoutX="204.0" layoutY="186.0" prefHeight="35.0" prefWidth="211.0"
-                          stylesheets="@styles.css"/>
-                <Button layoutX="310.0" layoutY="266.0" mnemonicParsing="false" onAction="#triggerCmd" prefHeight="30.0"
-                        prefWidth="105.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;"
-                        stylesheets="@styles.css" text="Trigger &gt;">
+                <ComboBox fx:id="moduleMenu" layoutX="205.0" layoutY="174.0" prefHeight="35.0" prefWidth="211.0" stylesheets="@styles.css" />
+                <Button layoutX="310.0" layoutY="367.0" mnemonicParsing="false" onAction="#triggerCmd" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;" stylesheets="@styles.css" text="Trigger &gt;">
                     <font>
-                        <Font name="System Bold" size="13.0"/>
+                        <Font name="System Bold" size="13.0" />
                     </font>
                     <tooltip>
-                        <Tooltip text="Executes the executable file"/>
+                        <Tooltip text="Executes the executable file" />
                     </tooltip>
                 </Button>
-                <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#addData" prefHeight="24.0"
-                        prefWidth="265.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;"
-                        stylesheets="@styles.css" text="Add new projects or modules &gt;">
+                <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#addData" prefHeight="24.0" prefWidth="265.0" style="-fx-background-color: #4bcd3e; -fx-background-radius: 70;" stylesheets="@styles.css" text="Add new projects or modules &gt;">
                     <font>
-                        <Font name="System Bold" size="13.0"/>
+                        <Font name="System Bold" size="13.0" />
                     </font>
                     <tooltip>
-                        <Tooltip text="eg. project,module or ,module or project,"/>
+                        <Tooltip text="eg. project,module or ,module or project," />
                     </tooltip>
                 </Button>
+            <TextArea fx:id="executeBeforeCmds" layoutX="42.0" layoutY="274.0" prefHeight="80.0" prefWidth="373.0" promptText="Add the command you want to run before " stylesheets="@styles.css" />
+            <Label layoutX="40.0" layoutY="236.0" prefHeight="28.0" prefWidth="208.0" text="Execute Before" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
             </Pane>
         </center>
     </BorderPane>

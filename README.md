@@ -2,7 +2,7 @@
 ## To run this application from the source
 `./mvnw clean javafx:run` in linux
 
-`mvnw.cmd clean javafx:run` in windows
+`./mvnw.cmd clean javafx:run` in windows
 
 ## Requirement for this project
 JDK 17 only and the rest is pulled by the mvn wrapper for you.
