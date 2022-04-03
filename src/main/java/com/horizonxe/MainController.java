@@ -24,8 +24,6 @@ public class MainController {
     @FXML
     public ComboBox<String> moduleMenu;
     public AnchorPane mainView;
-    @FXML
-    public TextArea executeBeforeCmds;
     private File executableFile;
     private File dataFile;
     private boolean isWindows;
@@ -82,7 +80,8 @@ public class MainController {
     }
 
     private void writeData(BufferedWriter writer, String project, String module) throws IOException {
-        writer.append(executeBeforeCmds.getText()).append(" && mvn -DProj ").append(project).append(" -DMod ").append(module);
+        String executeCmds = "ls ";    // Add execute before all commands here
+        writer.append(executeCmds).append(" && mvn -DProj ").append(project).append(" -DMod ").append(module);
     }
 
     private void initData() throws IOException {
