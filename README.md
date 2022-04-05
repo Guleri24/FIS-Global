@@ -1,4 +1,7 @@
 # FIS Global
+
+ ![](docs/FisGlobal.png)
+
 ## To run this application from the source
 `./mvnw clean javafx:run` in linux
 
