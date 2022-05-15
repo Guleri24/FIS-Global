@@ -1,4 +1,5 @@
 # FIS Global
+ FIS-Global is a JavaFX template application for building the multi-module maven project
 
  ![](docs/FisGlobal.png)
 
