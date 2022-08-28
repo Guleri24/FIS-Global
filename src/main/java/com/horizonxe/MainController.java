@@ -26,68 +26,23 @@ public class MainController {
     public AnchorPane mainView;
     private File executableFile;
     private File dataFile;
-    private boolean isWindows;
+    private boolean isOSWindows;
 
     public void initialize() throws IOException {
-        newFile("exec");
+        // Creates executable file Exec for creating scripts of the maven command
+        createOsSpecificFile("exec");
+
         writer = Files.newBufferedWriter(Paths.get(String.valueOf(executableFile)));
         writer.write("");
         writer.flush();
         initData();
     }
 
-    private void newFile(String type) throws IOException {
-        isWindows = System.getProperty("os.name")
-                .toLowerCase().startsWith("windows");
-        String username = System.getProperty("user.name");
-        String windowsPath = "C:\\Users\\" + username + "\\FisGlobal\\";
-        String linuxPath = "/home/" + username + "/FisGlobal/";
-        switch (type) {
-            case "exec" -> {
-                if (isWindows) {
-                    executableFile = new File(windowsPath + "exec.bat");
-                } else {
-                    executableFile = new File(linuxPath + "exec.sh");
-                }
-                executableFile.getParentFile().mkdir();
-                executableFile.createNewFile();
-                executableFile.setExecutable(true);
-            }
-            case "data" -> {
-                if (isWindows) {
-                    dataFile = new File(windowsPath + "data.csv");
-                } else {
-                    dataFile = new File(linuxPath + "data.csv");
-                }
-
-                dataFile.getParentFile().mkdir();
-                dataFile.createNewFile();
-                dataFile.setExecutable(true);
-            }
-        }
-    }
-
-    @FXML
-    public void writeData() {
-        try {
-            if (!projectMenu.getValue().isEmpty()) {
-                writeData(writer, projectMenu.getValue(), moduleMenu.getValue());
-                writer.flush();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void writeData(BufferedWriter writer, String project, String module) throws IOException {
-        String executeCmds = "ls ";    // Add execute before all commands here
-        writer.append(executeCmds).append(" && mvn -DProj ").append(project).append(" -DMod ").append(module);
-    }
-
     private void initData() throws IOException {
-        newFile("data");
-        String row;
+        // Creates Data file for storing projects and modules
+        createOsSpecificFile("data");
 
+        String row;
         BufferedReader csvReader = new BufferedReader(new FileReader(dataFile));
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split(",");
@@ -111,19 +66,71 @@ public class MainController {
         moduleMenu.setItems(FXCollections.observableArrayList(modules));
     }
 
+    private void createOsSpecificFile(String type) throws IOException {
+        isOSWindows = System.getProperty("os.name")
+                .toLowerCase().startsWith("windows");
+        String username = System.getProperty("user.name");
+        String windowsPath = "C:\\Users\\" + username + "\\FisGlobal\\";
+        String linuxPath = "/home/" + username + "/FisGlobal/";
+        switch (type) {
+            case "exec" -> {
+                if (isOSWindows) {
+                    executableFile = new File(windowsPath + "exec.bat");
+                } else {
+                    executableFile = new File(linuxPath + "exec.sh");
+                }
+
+                // Checks for permission and creation of exec file
+                executableFile.getParentFile().mkdir();
+                executableFile.createNewFile();
+                executableFile.setExecutable(true);
+            }
+            case "data" -> {
+                if (isOSWindows) {
+                    dataFile = new File(windowsPath + "data.csv");
+                } else {
+                    dataFile = new File(linuxPath + "data.csv");
+                }
+
+                // Checks for permission and creation of data file
+                dataFile.getParentFile().mkdir();
+                dataFile.createNewFile();
+                dataFile.setExecutable(true);
+            }
+        }
+    }
+
+    @FXML
+    public void writeData() {
+        try {
+            if (!projectMenu.getValue().isEmpty()) {
+                writeData(writer, projectMenu.getValue(), moduleMenu.getValue());
+                writer.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeData(BufferedWriter writer, String project, String module) throws IOException {
+        String preMavenBuildCommands = "ls ";    // Add commands which needed to be executed before maven build command
+        writer.append(preMavenBuildCommands)
+                .append(" && mvn -DProj ")
+                .append(project)
+                .append(" -DMod ")
+                .append(module);
+    }
+
     @FXML
     public void triggerCmd() throws IOException {
         writeData();
         Stage stage = (Stage) mainView.getScene().getWindow();
         writer.close();
-        if (isWindows) {
+        if (isOSWindows) {
             Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"" + executableFile.getAbsolutePath() + "\"");
             stage.close();
         } else {
             stage.close();
-        /*
-		    Runtime.getRuntime().exec(System.getenv("TERM") + " -e bash -c " + file.getAbsolutePath() + ";read");
-		*/
             Runtime.getRuntime().exec("alacritty" + " -e bash -c " + executableFile.getAbsolutePath() + ";read");
 
         }
@@ -132,14 +139,11 @@ public class MainController {
     @FXML
     public void addData() throws IOException {
         Stage stage = (Stage) mainView.getScene().getWindow();
-        if (isWindows) {
+        if (isOSWindows) {
             Runtime.getRuntime().exec("cmd /c start excel /K \"" + dataFile.getAbsolutePath() + "\"");
             stage.close();
         } else {
             stage.close();
-        /*
-		    Runtime.getRuntime().exec(System.getenv("TERM") + " -e bash -c " + file.getAbsolutePath() + ";read");
-        */
             Runtime.getRuntime().exec("gio " + " open " + dataFile.getAbsolutePath());
         }
     }
