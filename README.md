@@ -4,12 +4,13 @@
  ![](docs/FisGlobal.png)
 
 ## To run this application from the source
-`./mvnw clean javafx:run` in linux
+`mvn clean javafx:run` in linux
 
-`./mvnw.cmd clean javafx:run` in windows
+`mvn clean javafx:run` in windows
 
 ## Requirement for this project
 JDK 17 only and the rest is pulled by the mvn wrapper for you.
+In linux : Terminal Alacritty is required but can be changed.
 
 ## To create application packages
 1. Push the edits
