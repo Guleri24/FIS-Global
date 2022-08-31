@@ -10,7 +10,7 @@
 
 ## Requirement for this project
 JDK 17 only and the rest is pulled by the mvn wrapper for you.
-In linux : Terminal Alacritty is required but can be changed.
+In linux : Terminal [Alacritty](https://github.com/alacritty/alacritty) is required but can be changed.
 
 ## To create application packages
 1. Push the edits
